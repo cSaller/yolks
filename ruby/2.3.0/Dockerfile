@@ -1,4 +1,4 @@
-FROM ruby:2.3.0-slim-bullseye
+FROM ruby:2.3.0-slim
 
 LABEL author="Cleberson Saller" maintainer="hello@csaller.com"
 
