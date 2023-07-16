@@ -1,4 +1,4 @@
-name: build nodejs
+name: build node
 on:
   workflow_dispatch:
   schedule:
@@ -7,10 +7,10 @@ on:
     branches:
       - main
     paths:
-      - nodejs/**
+      - node/**
 jobs:
   push:
-    name: "yolks:nodejs_${{ matrix.tag }}"
+    name: "yolks:node_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -32,8 +32,8 @@ jobs:
       - uses: docker/build-push-action@v4
         with:
           context: ./node
-          file: ./nodejs/${{ matrix.tag }}/Dockerfile
+          file: ./node/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/csaller/yolks:nodejs_${{ matrix.tag }}
+            ghcr.io/csaller/yolks:node_${{ matrix.tag }}
