@@ -32,8 +32,10 @@ jobs:
       - uses: docker/build-push-action@v4
         with:
           context: ./ruby
-          file: ./ruby/${{ matrix.tag }}/Dockerfile
+          file: ./ruby/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             ghcr.io/csaller/yolks:ruby_${{ matrix.tag }}
+          build-args: |
+            RUBY_VERSION=${{ matrix.tag }}
