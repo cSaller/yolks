@@ -16,6 +16,11 @@ jobs:
       fail-fast: false
       matrix:
         tag:
+          - 14
+          - 16
+          - 17
+          - 18
+          - 19
           - 20
     steps:
       - uses: actions/checkout@v3
@@ -32,8 +37,10 @@ jobs:
       - uses: docker/build-push-action@v4
         with:
           context: ./node
-          file: ./node/${{ matrix.tag }}/Dockerfile
+          file: ./node/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             ghcr.io/csaller/yolks:node_${{ matrix.tag }}
+          build-args: |
+            NODE_VERSION=${{ matrix.tag }}
