@@ -18,9 +18,7 @@ jobs:
         tag:
           - 14
           - 16
-          - 17
           - 18
-          - 19
           - 20
     steps:
       - uses: actions/checkout@v3
